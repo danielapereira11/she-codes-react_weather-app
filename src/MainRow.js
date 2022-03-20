@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud } from "@fortawesome/free-solid-svg-icons";
 import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
+import main_raining from "./main_raining.svg";
+import main_fall from "./main_fall.svg";
+import main_snow from "./main_snow.svg";
 
 import "./App.css";
 
@@ -106,24 +109,20 @@ export default function MainRow() {
       <div className="col-2 imagem-column">
         <div className="row image-row">
           <img
-            src="./main_raining.svg"
+            src={main_raining}
             alt="raining umbrella"
             className="img-fluid"
           />
         </div>
         <div className="row image-row">
           <img
-            src="./main_fall.svg"
+            src={main_fall}
             alt="girl playing with leaves"
             className="img-fluid"
           />
         </div>
         <div className="row image-row">
-          <img
-            src="./main_snow.svg"
-            alt="snowman in the sun"
-            className="img-fluid"
-          />
+          <img src={main_snow} alt="snowman in the sun" className="img-fluid" />
         </div>
       </div>
     </div>
