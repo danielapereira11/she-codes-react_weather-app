@@ -4,10 +4,4 @@ body {
 
 #root {
   margin: 20px auto;
-  border: 5px solid #ffeedbe8;
-  border-radius: 10px;
-  padding: 30px;
-  background-color: #ffeedbf3;
-  color: #003638;
-  font-family: "Crimson Pro", serif;
 }

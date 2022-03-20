@@ -1,7 +1,18 @@
+.App {
+  margin: 20px auto;
+  border: 5px solid #ffeedbe8;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #ffeedbf3;
+  color: #003638;
+  font-family: "Crimson Pro", serif;
+}
+
 .main-row {
   margin-left: 0;
   margin-right: 0;
 }
+
 h1 {
   font-size: 17px;
   font-weight: 100;
@@ -129,7 +140,7 @@ p.card-text {
   color: #ffeedbe8;
 }
 @media (min-width: 991.98px) {
-  .container {
+  .App {
     max-width: 800px;
   }
 }
