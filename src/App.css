@@ -1,4 +1,4 @@
-.App {
+.container {
   margin: 20px auto;
   border: 5px solid #ffeedbe8;
   border-radius: 10px;
@@ -140,7 +140,7 @@ p.card-text {
   color: #ffeedbe8;
 }
 @media (min-width: 991.98px) {
-  .App {
+  .container {
     max-width: 800px;
   }
 }

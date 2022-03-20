@@ -23,7 +23,7 @@ export default function Forecast() {
           <div className="card-body">
             <p className="card-title">SUNDAY</p>
             <p className="card-text">
-              <FontAwesomeIcon icon={faCloud} className="fas da-cloud" />
+              <FontAwesomeIcon icon={faCloud} className="fas fa-cloud" />
             </p>
             <p className="card-text" id="forecast-max">
               12<small>ºC </small>
