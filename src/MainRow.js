@@ -9,9 +9,12 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
 export default function MainRow(props) {
-  let [weatherResults, setWeatherResults] = useState({ ready: false });
+  const apiKey = "7df6c65e200126c6e7cd1b9752957b4c";
 
-  function showWeather(response) {
+  let [weatherResults, setWeatherResults] = useState({ ready: false });
+  let [city, setCity] = useState(props.city);
+
+  function updateWeatherResults(response) {
     console.log(response.data);
     setWeatherResults({
       ready: true,
@@ -24,17 +27,47 @@ export default function MainRow(props) {
     });
   }
 
+  function search() {
+    let searchedLocationApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(searchedLocationApiUrl).then(updateWeatherResults);
+  }
+
+  function handleFormSubmition(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function showCurrentLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let currentLocationApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    axios.get(currentLocationApiUrl).then(updateWeatherResults);
+  }
+
+  function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(showCurrentLocation);
+  }
+
   if (weatherResults.ready) {
     return (
       <div>
-        <WeatherData city="Guimarães" weatherResults={weatherResults} />
+        <WeatherData weatherResults={weatherResults} />
         <div class="searchForm">
-          <form className="input-group" id="search-form">
+          <form
+            className="input-group"
+            id="search-form"
+            onSubmit={handleFormSubmition}
+          >
             <button
               type="button"
               className="input-group-text"
               id="current-location-button"
               title="See current location information"
+              onClick={getCurrentLocation}
             >
               <FontAwesomeIcon
                 icon={faMapMarkerAlt}
@@ -48,6 +81,7 @@ export default function MainRow(props) {
               placeholder=" Search another city ..."
               aria-label="Search input with submit button"
               autoComplete="off"
+              onChange={handleCityChange}
             />
             <button
               type="submit"
@@ -62,10 +96,7 @@ export default function MainRow(props) {
       </div>
     );
   } else {
-    const apiKey = "7df6c65e200126c6e7cd1b9752957b4c";
-    let searchedLocationTempApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=metric&appid=${apiKey}`;
-    axios.get(searchedLocationTempApiUrl).then(showWeather);
-
+    search();
     return "Loading weather information...";
   }
 }

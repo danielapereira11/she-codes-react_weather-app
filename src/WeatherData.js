@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud } from "@fortawesome/free-solid-svg-icons";
 import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,32 @@ import main_snow from "./main_snow.svg";
 import "./App.css";
 
 export default function WeatherData(props) {
+  let [temperature, setTemperature] = useState({
+    currentTemperature: props.weatherResults.currentTemp,
+    maxTemp: props.weatherResults.maxTemp,
+    minTemp: props.weatherResults.minTemp,
+  });
+
+  function changeTempToCelcius(event) {
+    event.preventDefault();
+    setTemperature({
+      currentTemperature: props.weatherResults.currentTemp,
+      maxTemp: props.weatherResults.maxTemp,
+      minTemp: props.weatherResults.minTemp,
+    });
+  }
+
+  function changeTempToFahrenheit(event) {
+    event.preventDefault();
+    setTemperature({
+      currentTemperature: Math.round(
+        props.weatherResults.currentTemp * 1.8 + 32
+      ),
+      maxTemp: Math.round(props.weatherResults.maxTemp * 1.8 + 32),
+      minTemp: Math.round(props.weatherResults.minTemp * 1.8 + 32),
+    });
+  }
+
   return (
     <div className="props.weatherResults">
       <div className="row align-items-center main-row">
@@ -31,7 +57,7 @@ export default function WeatherData(props) {
 
           <div className="row">
             <div className="col-12">
-              <h2 id="current-city">{props.city}</h2>
+              <h2 id="current-city">{props.weatherResults.currentCity}</h2>
             </div>
           </div>
           <div className="row">
@@ -48,7 +74,7 @@ export default function WeatherData(props) {
             <div className="col-5 col-sm-4 today">
               <span id="today-current-temp">
                 <span id="current-temp-value">
-                  {props.weatherResults.currentTemp}
+                  {temperature.currentTemperature}
                 </span>
                 <span>
                   <a
@@ -56,6 +82,7 @@ export default function WeatherData(props) {
                     id="celcius-link"
                     className="active unit-link temp-unit align-text-top"
                     title="See the temperature in Celcius"
+                    onClick={changeTempToCelcius}
                   >
                     ºC |
                   </a>
@@ -64,6 +91,7 @@ export default function WeatherData(props) {
                     id="fahrenheit-link"
                     className="not-active unit-link ºF temp-unit align-text-top"
                     title="See the temperature in Fahrenheit"
+                    onClick={changeTempToFahrenheit}
                   >
                     ºF
                   </a>
@@ -77,14 +105,14 @@ export default function WeatherData(props) {
                   icon={faLongArrowAltUp}
                   className="fas fa-long-arrow-alt-up"
                 />
-                <span id="max-temp">{props.weatherResults.maxTemp}ºC</span>
+                <span id="max-temp">{temperature.maxTemp}ºC</span>
               </p>
               <p className="today-min-temp">
                 <FontAwesomeIcon
                   icon={faLongArrowAltDown}
                   className="fas fa-long-arrow-alt-down"
                 />
-                <span id="min-temp">{props.weatherResults.minTemp}ºC</span>
+                <span id="min-temp">{temperature.minTemp}ºC</span>
               </p>
             </div>
           </div>
