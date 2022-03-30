@@ -11,7 +11,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           id="code-link"
         >
-          Open-source code
+          Open-source code{" "}
         </a>
         by Daniela Pereira | Hosted on Netlify
       </p>

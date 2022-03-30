@@ -107,6 +107,9 @@ footer,
 #code-link {
   color: #055052;
 }
+#code-link {
+  text-decoration: underline;
+}
 .next-temp {
   margin: 5px 5px 10px 5px;
 }
