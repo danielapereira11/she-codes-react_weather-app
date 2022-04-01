@@ -3,6 +3,8 @@ import main_raining from "./main_raining.svg";
 import main_fall from "./main_fall.svg";
 import main_snow from "./main_snow.svg";
 import Temperature from "./Temperature";
+import Greeting from "./Greeting";
+import Tip from "./Tip";
 
 import "./App.css";
 
@@ -42,14 +44,11 @@ export default function WeatherData(props) {
           <div className="row greeting-row">
             <div className="col greeting">
               <h1>
-                <span id="greeting">Good afternoon!</span>
+                <Greeting hours={hours} minutes={minutes} />
                 <br />
-                <span id="tip">
-                  It's a good day for an outdoor activity{" "}
-                  <span role="img" aria-label="cartwheel">
-                    🤸‍♀
-                  </span>
-                </span>
+                <Tip
+                  description={props.weatherResults.currentWeatherDescription}
+                />
               </h1>
             </div>
           </div>
