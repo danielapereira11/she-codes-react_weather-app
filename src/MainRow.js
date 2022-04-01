@@ -23,6 +23,7 @@ export default function MainRow(props) {
       minTemp: Math.round(response.data.main.temp_min),
       currentWeatherDescription: response.data.weather[0].description,
       windSpeedValue: response.data.wind.speed,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
     });
   }
 

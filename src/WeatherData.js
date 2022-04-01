@@ -54,7 +54,11 @@ export default function WeatherData(props) {
                   {props.weatherResults.currentWeatherDescription}{" "}
                 </span>
                 <span>
-                  <FontAwesomeIcon icon={faCloud} className="fas fa-cloud" />
+                  <img
+                    src={props.weatherResults.icon}
+                    alt={props.weatherResults.description}
+                    id="weather-icon"
+                  />
                 </span>
               </p>
             </div>
