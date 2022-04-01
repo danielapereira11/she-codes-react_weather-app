@@ -8,7 +8,8 @@ function App() {
   return (
     <div className="App">
       <MainRow city="Guimarães" />
-      <Forecast />
+      {/* <Forecast /> */}
+      <br />
       <Footer />
     </div>
   );
