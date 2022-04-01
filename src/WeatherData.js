@@ -1,6 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloud } from "@fortawesome/free-solid-svg-icons";
 import main_raining from "./main_raining.svg";
 import main_fall from "./main_fall.svg";
 import main_snow from "./main_snow.svg";
@@ -9,6 +7,34 @@ import Temperature from "./Temperature";
 import "./App.css";
 
 export default function WeatherData(props) {
+  let currentDateTime = new Date();
+  let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let months = [
+    "January",
+    "Febuary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let weekDay = weekDays[currentDateTime.getDay()];
+  let month = months[currentDateTime.getMonth()];
+  let dayOfMonth = currentDateTime.getDate();
+  let hours = currentDateTime.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = currentDateTime.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   return (
     <div className="WeatherData">
       <div className="row align-items-center main-row">
@@ -37,10 +63,14 @@ export default function WeatherData(props) {
             <div className="col-5 align-self-center">
               <div className="today-current-date-time">
                 <p>
-                  <span id="current-date">Sat, March 26</span>
+                  <span id="current-date">
+                    {weekDay}, {month} {dayOfMonth}
+                  </span>
                   <br />
                   <small>Last updated at </small>
-                  <span id="current-time">12:27</span>
+                  <span id="current-time">
+                    {hours}:{minutes}
+                  </span>
                 </p>
               </div>
             </div>
