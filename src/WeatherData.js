@@ -1,43 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud } from "@fortawesome/free-solid-svg-icons";
-import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 import main_raining from "./main_raining.svg";
 import main_fall from "./main_fall.svg";
 import main_snow from "./main_snow.svg";
+import Temperature from "./Temperature";
 
 import "./App.css";
 
 export default function WeatherData(props) {
-  let [temperature, setTemperature] = useState({
-    currentTemperature: props.weatherResults.currentTemp,
-    maxTemp: props.weatherResults.maxTemp,
-    minTemp: props.weatherResults.minTemp,
-  });
-
-  function changeTempToCelcius(event) {
-    event.preventDefault();
-    setTemperature({
-      currentTemperature: props.weatherResults.currentTemp,
-      maxTemp: props.weatherResults.maxTemp,
-      minTemp: props.weatherResults.minTemp,
-    });
-  }
-
-  function changeTempToFahrenheit(event) {
-    event.preventDefault();
-    setTemperature({
-      currentTemperature: Math.round(
-        props.weatherResults.currentTemp * 1.8 + 32
-      ),
-      maxTemp: Math.round(props.weatherResults.maxTemp * 1.8 + 32),
-      minTemp: Math.round(props.weatherResults.minTemp * 1.8 + 32),
-    });
-  }
-
   return (
-    <div className="props.weatherResults">
+    <div className="WeatherData">
       <div className="row align-items-center main-row">
         <div className="col">
           <div className="row greeting-row">
@@ -71,50 +44,7 @@ export default function WeatherData(props) {
                 </p>
               </div>
             </div>
-            <div className="col-5 col-sm-4 today">
-              <span id="today-current-temp">
-                <span id="current-temp-value">
-                  {temperature.currentTemperature}
-                </span>
-                <span>
-                  <a
-                    href="/"
-                    id="celcius-link"
-                    className="active unit-link temp-unit align-text-top"
-                    title="See the temperature in Celcius"
-                    onClick={changeTempToCelcius}
-                  >
-                    ºC |
-                  </a>
-                  <a
-                    href="/"
-                    id="fahrenheit-link"
-                    className="not-active unit-link ºF temp-unit align-text-top"
-                    title="See the temperature in Fahrenheit"
-                    onClick={changeTempToFahrenheit}
-                  >
-                    ºF
-                  </a>
-                </span>
-              </span>
-            </div>
-
-            <div className="col-2 col-sm-3 today-min-max-temp">
-              <p className="today-max-temp">
-                <FontAwesomeIcon
-                  icon={faLongArrowAltUp}
-                  className="fas fa-long-arrow-alt-up"
-                />
-                <span id="max-temp">{temperature.maxTemp}ºC</span>
-              </p>
-              <p className="today-min-temp">
-                <FontAwesomeIcon
-                  icon={faLongArrowAltDown}
-                  className="fas fa-long-arrow-alt-down"
-                />
-                <span id="min-temp">{temperature.minTemp}ºC</span>
-              </p>
-            </div>
+            <Temperature celcius={props.weatherResults} />
           </div>
 
           <div className="row justify-content-start today-current-weather">
