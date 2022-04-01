@@ -7,6 +7,10 @@ import "./App.css";
 export default function Temperature(props) {
   let [unit, setUnit] = useState("celcius");
 
+  function preventDefault(event) {
+    event.preventDefault();
+  }
+
   function changeTempToCelcius(event) {
     event.preventDefault();
     setUnit("celcius");
@@ -30,6 +34,7 @@ export default function Temperature(props) {
                   id="celcius-link"
                   className="not-active unit-link temp-unit align-text-top"
                   title="See the temperature in Celcius"
+                  onClick={preventDefault}
                 >
                   ºC |
                 </a>
@@ -92,6 +97,7 @@ export default function Temperature(props) {
                   id="fahrenheit-link"
                   className="not-active unit-link ºF temp-unit align-text-top"
                   title="See the temperature in Fahrenheit"
+                  onClick={preventDefault}
                 >
                   ºF
                 </a>
