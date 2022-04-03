@@ -1,13 +1,12 @@
 import React from "react";
 import "./App.css";
 import Footer from "./Footer.js";
-import MainRow from "./MainRow.js";
+import Main from "./Main.js";
 
 function App() {
   return (
     <div className="App">
-      <MainRow city="Guimarães" />
-      <br />
+      <Main city="Guimarães" />
       <Footer />
     </div>
   );
