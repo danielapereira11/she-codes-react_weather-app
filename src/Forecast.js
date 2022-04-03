@@ -30,32 +30,54 @@ export default function Forecast(props) {
   }
 
   if (loaded) {
-    console.log(forecastData);
-
     return (
-      <div className="col forecast-day">
-        <div className="card">
-          <div className="card-body">
-            <p className="card-title">{formatWeekDay(forecastData[0].dt)}</p>
-            <p className="card-text">
-              <FontAwesomeIcon icon={faCloud} className="fas fa-cloud" />
-            </p>
-            <p className="card-text" id="forecast-max">
-              {Math.round(forecastData[0].temp.max)}
-              <small>ºC </small>
-              <small className="light">
-                | {Math.round(forecastData[0].temp.max * 1.8 + 32)}ºF
-              </small>
-            </p>
-            <p className="card-text" id="forecast-min">
-              {Math.round(forecastData[0].temp.min)}
-              <small>ºC </small>
-              <small className="light">
-                | {Math.round(forecastData[0].temp.min * 1.8 + 32)}ºF
-              </small>
-            </p>
-          </div>
-        </div>
+      <div
+        className="
+            row row-cols-1 row-cols-md-5
+            g-3
+            align-items-center
+            justify-content-evenly
+            next-temp
+          "
+        id="forecast"
+      >
+        {forecastData.map(function(forecastDay, index) {
+          if (index > 0 && index < 6) {
+            return (
+              <div className="col forecast-day" key={index}>
+                <div className="card">
+                  <div className="card-body">
+                    <p className="card-title">
+                      {formatWeekDay(forecastDay.dt)}
+                    </p>
+                    <p className="card-text">
+                      <FontAwesomeIcon
+                        icon={faCloud}
+                        className="fas fa-cloud"
+                      />
+                    </p>
+                    <p className="card-text" id="forecast-max">
+                      {Math.round(forecastDay.temp.max)}
+                      <small>ºC </small>
+                      <small className="light">
+                        | {Math.round(forecastDay.temp.max * 1.8 + 32)}
+                        ºF
+                      </small>
+                    </p>
+                    <p className="card-text" id="forecast-min">
+                      {Math.round(forecastDay.temp.min)}
+                      <small>ºC </small>
+                      <small className="light">
+                        | {Math.round(forecastDay.temp.min * 1.8 + 32)}
+                        ºF
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        })}
       </div>
     );
   } else {
