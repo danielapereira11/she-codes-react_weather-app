@@ -16,7 +16,6 @@ export default function MainRow(props) {
   let [city, setCity] = useState(props.city);
 
   function updateWeatherResults(response) {
-    console.log(response);
     setWeatherResults({
       ready: true,
       currentCity: response.data.name,
