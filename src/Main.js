@@ -16,9 +16,11 @@ export default function MainRow(props) {
   let [city, setCity] = useState(props.city);
 
   function updateWeatherResults(response) {
+    console.log(response);
     setWeatherResults({
       ready: true,
       currentCity: response.data.name,
+      coordinates: response.data.coord,
       currentTemp: Math.round(response.data.main.temp),
       maxTemp: Math.round(response.data.main.temp_max),
       minTemp: Math.round(response.data.main.temp_min),
@@ -94,7 +96,12 @@ export default function MainRow(props) {
             </button>
           </form>
         </div>
-        <Forecast />
+        <div className="forecast">
+          <hr />
+          <h3>How will the weather be for the next couple of days?</h3>
+          <Forecast coordinates={weatherResults.coordinates} />
+        </div>
+        <hr />
       </div>
     );
   } else {
