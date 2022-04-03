@@ -59,7 +59,7 @@ export default function MainRow(props) {
     return (
       <div>
         <WeatherData weatherResults={weatherResults} />
-        <div class="searchForm">
+        <div className="searchForm">
           <form
             className="input-group"
             id="search-form"
@@ -99,7 +99,18 @@ export default function MainRow(props) {
         <div className="forecast">
           <hr />
           <h3>How will the weather be for the next couple of days?</h3>
-          <Forecast coordinates={weatherResults.coordinates} />
+          <div
+            className="
+            row row-cols-1 row-cols-md-5
+            g-3
+            align-items-center
+            justify-content-evenly
+            next-temp
+          "
+            id="forecast"
+          >
+            <Forecast coordinates={weatherResults.coordinates} />
+          </div>
         </div>
         <hr />
       </div>
