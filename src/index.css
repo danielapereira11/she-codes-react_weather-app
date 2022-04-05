@@ -1,3 +1,31 @@
 body {
   background-image: url("./backg__kite.svg");
 }
+
+.clear-sky {
+  background-image: url("./backg__nature.svg");
+}
+
+.clouds {
+  background-image: url("./backg__kite.svg");
+}
+
+.rain {
+  background-image: url("./backg__autumn.svg");
+}
+
+.thunder {
+  background-image: url("./backg__moonlight.svg");
+}
+
+.snow {
+  background-image: url("./backg__snow.svg");
+}
+
+.mist {
+  background-image: url("./backg__dreamer.svg");
+}
+
+.else {
+  background-image: url("./backg__playful_cat.svg");
+}
