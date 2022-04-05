@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloud } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import axios from "axios";
 
@@ -46,6 +44,7 @@ export default function Forecast(props) {
         id="forecast"
       >
         {forecastData.map(function(forecastDay, index) {
+          let iconUrl = `http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}.png`;
           if (index > 0 && index < 6) {
             return (
               <div className="col forecast-day" key={index}>
@@ -55,9 +54,10 @@ export default function Forecast(props) {
                       {formatWeekDay(forecastDay.dt)}
                     </p>
                     <p className="card-text">
-                      <FontAwesomeIcon
-                        icon={faCloud}
-                        className="fas fa-cloud"
+                      <img
+                        src={iconUrl}
+                        alt={forecastDay.weather[0].description}
+                        id="weather-icon"
                       />
                     </p>
                     <p className="card-text" id="forecast-max">
