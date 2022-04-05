@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloud } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
@@ -7,6 +7,10 @@ import axios from "axios";
 export default function Forecast(props) {
   let [forecastData, setForecastData] = useState(null);
   let [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
   function formatWeekDay(timestamp) {
     let date = new Date(timestamp * 1000);
