@@ -1,8 +1,10 @@
 import React from "react";
 import "./App.css";
+import "./index.css";
 
 export default function Tip(props) {
   if (props.description === "clear sky") {
+    document.body.className = "clear-sky";
     return (
       <span id="tip">
         It's a good day for an outdoor activity{" "}
@@ -12,6 +14,7 @@ export default function Tip(props) {
       </span>
     );
   } else if (props.description.includes("clouds")) {
+    document.body.className = "clouds";
     return (
       <span id="tip">
         It's a good day for an outdoor activity{" "}
@@ -21,6 +24,7 @@ export default function Tip(props) {
       </span>
     );
   } else if (props.description.includes("rain")) {
+    document.body.className = "rain";
     return (
       <span id="tip">
         Don't forget your umbrella{" "}
@@ -30,6 +34,7 @@ export default function Tip(props) {
       </span>
     );
   } else if (props.description.includes("thunder")) {
+    document.body.className = "thunder";
     return (
       <span id="tip">
         <span role="img" aria-label="lightning-bolt">
@@ -42,6 +47,7 @@ export default function Tip(props) {
       </span>
     );
   } else if (props.description.includes("snow")) {
+    document.body.className = "snow";
     return (
       <span id="tip">
         Is there enough for a snowman?{" "}
@@ -54,6 +60,7 @@ export default function Tip(props) {
     props.description.includes("mist") ||
     props.description.includes("haze")
   ) {
+    document.body.className = "mist";
     return (
       <span id="tip">
         Be careful out there, you can't see clearly{" "}
@@ -63,6 +70,7 @@ export default function Tip(props) {
       </span>
     );
   } else {
+    document.body.className = "else";
     return (
       <span id="tip">
         Have a great day{" "}
